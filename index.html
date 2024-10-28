@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .calculator{
+            width: 300px;
+            background-color: #333333;
+            border-radius: 5px;
+            padding: 20px 20px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #display-01{
+            width: 100%;
+            height: 60px;
+            text-align: center;
+            font-size: 24px;
+            /*padding: 10px;*/
+            border-radius: 5px;
+            background-color: #222222;
+            color: white;
+            margin-bottom: 1px;
+            border-bottom-color: white;
+            border: none;
+        }
+
+        #display-02{
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            font-size: 24px;
+            /*padding: 10px;*/
+            border-radius: 5px;
+            background-color: #222222;
+            color: white;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .buttons{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button{
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+            background-color: #444444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover{
+            background-color: #555555;
+        }
+
+        h3{
+            /*font-family: Arial, sans-serif;*/
+            text-align: center;
+            color: #9c9a9a;
+        }
+
+        /*.C{*/
+        /*    background-color: #f88a8a;*/
+        /*}*/
+
+    </style>
+
+</head>
+<body>
+
+<div class="calculator">
+    <h3> Calculator </h3>
+    <input type="text" id="display-01">
+    <input type="text" id="display-02">
+    <div class="buttons">
+        <button onclick="clearDisplay('C')"> C </button>
+        <button onclick="backspace('<-')"> <- </button>
+        <button onclick="addedToDisplay('(')"> ( </button>
+        <button onclick="addedToDisplay(')')"> ) </button>
+        <button onclick="addedToDisplay('5')"> 5 </button>
+        <button onclick="addedToDisplay('1')"> 1 </button>
+        <button onclick="addedToDisplay('9')"> 9 </button>
+        <button onclick="addedToDisplay('/')"> / </button>
+        <button onclick="addedToDisplay('2')"> 2 </button>
+        <button onclick="addedToDisplay('3')"> 3 </button>
+        <button onclick="addedToDisplay('4')"> 4 </button>
+        <button onclick="addedToDisplay('%')"> % </button>
+        <button onclick="addedToDisplay('6')"> 6 </button>
+        <button onclick="addedToDisplay('7')"> 7 </button>
+        <button onclick="addedToDisplay('8')"> 8 </button>
+        <button onclick="addedToDisplay('*')"> * </button>
+        <button onclick="addedToDisplay('+')"> + </button>
+        <button onclick="addedToDisplay('-')"> - </button>
+        <button onclick="calculations('=')"> = </button>
+        <button onclick="addedToDisplay('.')"> . </button>
+    </div>
+</div>
+
+<script>
+    function addedToDisplay(value) {
+        document.getElementById("display-02").value += value; //value = value + value;
+    }
+
+    function clearDisplay() {
+        document.getElementById("display-02").value = "";
+        document.getElementById("display-01").value = "";
+    }
+
+    function backspace() {
+        const display = document.getElementById("display-02");
+        display.value = display.value.slice(0, -1);
+    }
+
+    function calculations() {
+        try{
+            const display = document.getElementById("display-02");
+            display.value = eval(display.value);
+        } catch (error) {
+            display.value = "Error!";
+        }
+    }
+
+</script>
+
+</body>
+</html>
