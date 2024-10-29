@@ -208,15 +208,11 @@
     }
 
     function calculations() {
-        // Get the expression from input display (display-01)
         const expression = document.getElementById("display-01").value;
         try {
-            // Evaluate the expression
             const result = eval(expression);
-            // Show the result in the output display (display-02)
             document.getElementById("display-02").value = result;
         } catch (error) {
-            // If an error occurs, show "Error" in the output display
             document.getElementById("display-02").value = "Error";
         }
     }
